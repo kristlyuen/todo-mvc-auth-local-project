@@ -9,23 +9,24 @@
 </head>
 <body>
     <h1>Todos</h1>
+    <a href="/logout">Logout</a>
+
+    <form action="/todos/createTodo" method='POST'>
+      <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+      <input type="date" placeholder="Due date" name="dueDate">
+      <input type="submit">
+  </form>
+
     <ul>
     <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %><%= el.dueDate %></span>
+                <span class='del'> 🗑️ </span>
             </li>
     <% }) %>    
     </ul>
 
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
-
-    <a href="/logout">Logout</a>
 
     <script src="js/main.js"></script>
 </body>
