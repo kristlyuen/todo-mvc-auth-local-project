@@ -8,24 +8,27 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
+    <h1>Todo List</h1>
     <a href="/logout">Logout</a>
 
     <form action="/todos/createTodo" method='POST'>
-      <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+      <input type="text" placeholder="Enter to do Item" name='todoItem'>
       <input type="date" placeholder="Due date" name="dueDate">
       <input type="submit">
   </form>
-
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %><%= el.dueDate %></span>
-                <span class='del'> 🗑️ </span>
-            </li>
-    <% }) %>    
-    </ul>
-
+    <div>
+      <h2>To Do</h2>
+      <ul>
+      <% todos.forEach( el => { %>
+              <li class='todoItem' data-id='<%=el._id%>'>
+                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %> - </span>
+                  <span><%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %></span>
+                  <span class='del'> 🗑️ </span>
+              </li>
+      <% }) %>    
+      </ul>
+    </div>
+    
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
 
     <script src="js/main.js"></script>
