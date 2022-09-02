@@ -16,12 +16,11 @@
       <input type="date" placeholder="Due date" name="dueDate">
       <input type="submit">
   </form>
+    <h2>Welcome back, <%= user.userName %>!</h2>
     <div>
-      <h2>Welcome back, <%= user.userName %>!</h2>
-
       <h2>To Do</h2>
       <ul>
-      <% todos.forEach( el => { %>
+      <% todos.filter( el => el.completed !== true ).forEach( el => { %>
               <li class='todoItem' data-id='<%=el._id%>'>
                   <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %> - <%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %>
                   <span class='del'> 🗑️ </span></span>
@@ -33,7 +32,7 @@
     <div>
       <h2>Completed</h2>
       <ul>
-      <% todos.forEach( el => { %>
+      <% todos.filter( el => el.completed === true).forEach( el => { %>
               <li class='todoItemCompleted' data-id='<%=el._id%>'>
                   <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>
                   <span class='del'> 🗑️ </span></span>
