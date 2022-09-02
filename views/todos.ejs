@@ -4,59 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo list proyect</title>
-    <link rel="stylesheet" href="css/style.css"><link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="menu-container">
-        <!-- burger menu -->
-        <input type="checkbox" aria-label="Toggle menu" />
-        <span></span>
-        <span></span>
-        <span></span>
-      
-        
-        <!-- menu items -->
-        <div class="menu">
-          <ul>
-            <li>
-              <a href="#">
-                 To Do List 
-              </a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="/logout">
-                Logout
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    
-    <h2 class="header-h2"><%= user.userName %> has <%= left %> things left to do.</h2>
+    <h1>Todo List</h1>
+    <a href="/logout">Logout</a>
 
     <form action="/todos/createTodo" method='POST'>
-        <input class="form-item"type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input class="form-item" type="text" placeholder="Due date" name=''>
-
-        <!--<input type="text" placeholder="Due date" name=''> 
-         placeholder and name may be changed in the future depending on acomodations that may need to take place in the backend -->
-
-        <input class="submit-button" type="submit">
-    </form>
-
-    <ul>
-        <% todos.forEach( el => { %>
-                <li class='todoItem' data-id='<%=el._id%>'>
-                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                    <span class='del'> Delete </span>
-                </li>
-        <% }) %>    
-        </ul>
+      <input type="text" placeholder="Enter to do Item" name='todoItem'>
+      <input type="date" placeholder="Due date" name="dueDate">
+      <input type="submit">
+  </form>
+    <div>
+      <h2>To Do</h2>
+      <ul>
+      <% todos.forEach( el => { %>
+              <li class='todoItem' data-id='<%=el._id%>'>
+                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %> - </span>
+                  <span><%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %></span>
+                  <span class='del'> 🗑️ </span>
+              </li>
+      <% }) %>    
+      </ul>
+    </div>
+    
+    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
 
     <script src="js/main.js"></script>
 </body>
