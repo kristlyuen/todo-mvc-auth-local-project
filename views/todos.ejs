@@ -22,8 +22,9 @@
       <ul>
       <% todos.filter( el => el.completed !== true ).forEach( el => { %>
               <li class='todoItem' data-id='<%=el._id%>'>
-                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %> - <%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %>
-                  <span class='del'> 🗑️ </span></span>
+                <input type="checkbox" class='<%= el.completed === true ? 'completed' : 'not'%>'>
+                <span><%= el.todo %> - <%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %>
+                <span class='del'> 🗑️ </span></span>
               </li>
       <% }) %>    
       </ul>
@@ -34,7 +35,8 @@
       <ul>
       <% todos.filter( el => el.completed === true).forEach( el => { %>
               <li class='todoItemCompleted' data-id='<%=el._id%>'>
-                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>
+                <input type="checkbox" class='<%= el.completed === true ? 'completed' : 'not'%>'>  
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>
                   <span class='del'> 🗑️ </span></span>
               </li>
       <% }) %>    
