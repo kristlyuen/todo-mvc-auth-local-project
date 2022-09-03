@@ -8,28 +8,67 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todo List</h1>
-    <a href="/logout">Logout</a>
+  <nav class="menu-container">
+    <!-- burger menu -->
+    <input type="checkbox" aria-label="Toggle menu" />
+    <span></span>
+    <span></span>
+    <span></span>
+  
+    
+    <!-- menu items -->
+    <div class="menu">
+      <ul>
+        <li>
+          <a href="#">
+             To Do List 
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/logout">
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <h2>Welcome back, <%= user.userName %>!</h2>
 
     <form action="/todos/createTodo" method='POST'>
-      <input type="text" placeholder="Enter to do Item" name='todoItem'>
-      <input type="date" placeholder="Due date" name="dueDate">
-      <input type="submit">
+      <input class="form-item"type="text" placeholder="Enter to do Item" name='todoItem'>
+      <input class="form-item" type="date" placeholder="Due date" name="dueDate">
+      <input class="submit-button" type="submit">
   </form>
+   
     <div>
       <h2>To Do</h2>
       <ul>
-      <% todos.forEach( el => { %>
+      <% todos.filter( el => el.completed !== true ).forEach( el => { %>
               <li class='todoItem' data-id='<%=el._id%>'>
-                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %> - </span>
-                  <span><%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %></span>
-                  <span class='del'> 🗑️ </span>
+                <input type="checkbox" class='<%= el.completed === true ? 'completed' : 'not'%>'>
+                <span><%= el.todo %> - <%= `${el.dueDate.getMonth()+1}/${el.dueDate.getDate()}/${el.dueDate.getFullYear()}` %>
+                <span class='del'> 🗑️ </span></span>
               </li>
       <% }) %>    
       </ul>
     </div>
     
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <div>
+      <h2>Completed</h2>
+      <ul>
+      <% todos.filter( el => el.completed === true).forEach( el => { %>
+              <li class='todoItemCompleted' data-id='<%=el._id%>'>
+                <input type="checkbox" class='<%= el.completed === true ? 'completed' : 'not'%>'>  
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %>
+                  <span class='del'> 🗑️ </span></span>
+              </li>
+      <% }) %>    
+      </ul>
+    </div>
+
+    
 
     <script src="js/main.js"></script>
 </body>
