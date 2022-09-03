@@ -207,10 +207,12 @@ body {
 .submit-button:hover{
     background-color:#374971;
 }
+
 .completed{
     text-decoration: line-through;
     color: gray;
 }
+
 .not{
     text-decoration: underline;
 }
