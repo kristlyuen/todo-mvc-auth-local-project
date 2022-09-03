@@ -8,15 +8,39 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todo List</h1>
-    <a href="/logout">Logout</a>
+  <nav class="menu-container">
+    <!-- burger menu -->
+    <input type="checkbox" aria-label="Toggle menu" />
+    <span></span>
+    <span></span>
+    <span></span>
+  
+    
+    <!-- menu items -->
+    <div class="menu">
+      <ul>
+        <li>
+          <a href="#">
+             To Do List 
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/logout">
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <h2>Welcome back, <%= user.userName %>!</h2>
 
     <form action="/todos/createTodo" method='POST'>
-      <input type="text" placeholder="Enter to do Item" name='todoItem'>
-      <input type="date" placeholder="Due date" name="dueDate">
-      <input type="submit">
+      <input class="form-item"type="text" placeholder="Enter to do Item" name='todoItem'>
+      <input class="form-item" type="date" placeholder="Due date" name="dueDate">
+      <input class="submit-button" type="submit">
   </form>
-    <h2>Welcome back, <%= user.userName %>!</h2>
     <div>
       <h2>To Do</h2>
       <ul>
@@ -28,8 +52,8 @@
               </li>
       <% }) %>    
       </ul>
-    </div>
-    
+    </div> 
+
     <div>
       <h2>Completed</h2>
       <ul>
@@ -42,8 +66,6 @@
       <% }) %>    
       </ul>
     </div>
-
-    
 
     <script src="js/main.js"></script>
 </body>
