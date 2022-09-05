@@ -20,7 +20,7 @@ module.exports = {
               todo: req.body.todoItem, 
               completed: false, 
               userId: req.user.id, 
-              dueDate: req.body.dueDate
+              dueDate: req.body.dueDate.replace(/-/g, '\/').replace(/T.+/, '')
             })
             console.log('Todo has been added!')
             res.redirect('/todos')
