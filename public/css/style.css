@@ -15,8 +15,8 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    background: #232323;
-    color: #cdcdcd;
+    background: #716DF2;
+    color: #F2F2F2;
     padding: 20px;
     z-index: 1;
     -webkit-user-select: none;
@@ -31,7 +31,7 @@ body {
   }
   
   .menu-container a:hover {
-    color: #ccb0be;
+    color: #171026;
   }
   
   .menu-container input {
@@ -53,7 +53,7 @@ body {
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-    background: #cdcdcd;
+    background: #A3A7BF;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 4px 0px;
@@ -166,38 +166,66 @@ body {
     position: relative;
 
 }
+/* header */
 
-/* forms styling  */
+h2{
+  text-align: center;
+}
+/* form styling  */
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  gap: 30px;
+}
+
+
 .form-item {
-
-	background-color:#ccb0be;
-	border-radius:12px;
-	display:inline-block;
-	cursor:text;
-	color:#ffffff;
-    font-family: 'Roboto', sans-serif;
-	font-size:12px;
-	font-weight:400;
-	padding:8px 18px;
-	text-decoration:none;
+  align-self:  center;
+  background-color: #716DF2;
+  border: 1ex solid none;
+  border-top-width: 1.7em;
+  margin: 0;
+  padding: 0;
+  color: #F2F2F2;
+  outline: 7px solid #171026;
+  font-size: 17px;
+  text-align: center;
+  transition: all 1s;
+  width: 200px;
+  height: 50px;
+  font-weight: bold;
+}
+.selector{
+  width: 400px;
+}
+.form-item:hover  {
+  border-top-width: 0.2em;
+  background-color: #A3A7BF;
 }
 
-.form-item:active {
-	position:relative;
-	top:1px;
+.form-item:focus  {
+  border-top-width: 0.2em;
+  background-color: #A3A7BF;
 }
+
+/* button  styling  */
 
 .submit-button {
-    background-color:#707978;
-	border-radius:12px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-    font-family: 'Roboto', sans-serif;
-	font-size:12px;
-	font-weight:400;
-	padding:8px 18px;
-	text-decoration:none;
+  background-color: #716DF2;
+  border: 7px solid #171026;
+  border-radius: 15px;
+  margin: 0;
+  padding: 0;
+  color: #F2F2F2;
+  font-size: 17px;
+  text-align: center;
+  transition: all 1s;
+  width: 200px;
+  height: 90px;
+  font-weight: bold;
 }
 .submit-button:active{
 	position:relative;
@@ -215,4 +243,8 @@ body {
 
 .not{
     text-decoration: underline;
+}
+
+.todoItemCompleted{
+  color: red;
 }
